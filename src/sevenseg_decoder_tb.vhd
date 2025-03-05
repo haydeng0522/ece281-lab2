@@ -31,8 +31,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity sevenseg_decoder_tb is
-end sevenseg_decoder_tb;
+entity sevenseg_decoder is
+    Port ( i_Hex : in STD_LOGIC_VECTOR (3 downto 0);
+           o_seg_n : out STD_LOGIC_VECTOR (6 downto 0));
+end sevenseg_decoder;
 
 architecture Behavioral of sevenseg_decoder_tb is
   component sevenseg_decoder is
@@ -74,7 +76,7 @@ begin
 	       assert (w_outBit = x"00") report "bad at eight" severity failure;
 	   w_inBit <= x"9"; wait for 10 ns;
 	       assert (w_outBit = x"18") report "bad at nine" severity failure;
-	   w_inBit <= x"A"; wait for 10ns;
+	   w_inBit <= x"A"; wait for 10 ns;
 	       assert (w_outBit = x"08") report "bad at A" severity failure;
 	   w_inBit <= x"B"; wait for 10 ns;
 	       assert (w_outBit = x"03") report "bad at B" severity failure;
@@ -84,7 +86,7 @@ begin
 	       assert (w_outBit = x"21") report "bad at D" severity failure;
 	   w_inBit <= x"E"; wait for 10 ns;
 	       assert (w_outBit = x"06") report "bad at E" severity failure;
-	   w_inBit <= x"F"; wait for 10ns;
+	   w_inBit <= x"F"; wait for 10 ns;
 	       assert (w_outBit = x"0E") report "bad at F" severity failure;
         wait;
     end process;
